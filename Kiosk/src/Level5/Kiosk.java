@@ -10,9 +10,9 @@ public class Kiosk {
     Kiosk () {
         this.menuItemsArr = new ArrayList<>();
 
-        menuItemsArr.add(new Menu("drink"));
-        menuItemsArr.add(new Menu("food"));
-        menuItemsArr.add(new Menu("desserts"));
+        this.menuItemsArr.add(new Menu("drink"));
+        this.menuItemsArr.add(new Menu("food"));
+        this.menuItemsArr.add(new Menu("desserts"));
     }
     
     void start () {
