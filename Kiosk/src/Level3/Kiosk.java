@@ -8,6 +8,7 @@ public class Kiosk {
     List<MenuItem> menuArr;
 
     Kiosk (List<MenuItem> thisArr) {
+        this.menuArr = new ArrayList<>();
         this.menuArr = thisArr;
     }
 
