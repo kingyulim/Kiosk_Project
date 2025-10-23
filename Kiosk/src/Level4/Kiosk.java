@@ -90,7 +90,6 @@ public class Kiosk {
             for (int a = 0; a < categoryDataArr.size(); a++) {
                 MenuItem categoryItem = categoryDataArr.get(a);
                 System.out.println(categoryItem.menuPrint(a + 1));
-
             }
 
             System.out.println("\n===============================================\n");
