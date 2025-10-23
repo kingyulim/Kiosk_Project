@@ -26,10 +26,8 @@ public class Kiosk {
             System.out.println("[카테고리]");
 
             for (int a = 0; a < menuItemsArr.size(); a++) {
-                Menu menuCateListArr = menuItemsArr.get(a);
-
                 String menuCateName = "";
-                String menuCateNameCode = menuCateListArr.getCategoryName();
+                String menuCateNameCode = menuItemsArr.get(a).getCategoryName();
 
                 switch (menuCateNameCode) {
                     case "drink":
@@ -38,12 +36,12 @@ public class Kiosk {
                         break;
 
                     case "food":
-                        menuCateName = "2. 음식" + cateNameArr[1];
+                        menuCateName = "2. " + cateNameArr[1];
 
                         break;
 
                     case "desserts":
-                        menuCateName = "3. 디저트" + cateNameArr[2];
+                        menuCateName = "3. " + cateNameArr[2];
 
                         break;
                 }
