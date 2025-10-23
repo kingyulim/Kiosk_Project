@@ -8,15 +8,11 @@ public class Kiosk {
     private final List<Menu> menuItemsArr;
 
     Kiosk () {
-        Menu menuCateDrink = new Menu("drink");
-        Menu menuCateFood = new Menu("food");
-        Menu menuCateDesserts = new Menu("desserts");
-
         this.menuItemsArr = new ArrayList<>();
 
-        menuItemsArr.add(menuCateDrink);
-        menuItemsArr.add(menuCateFood);
-        menuItemsArr.add(menuCateDesserts);
+        menuItemsArr.add(new Menu("drink"));
+        menuItemsArr.add(new Menu("food"));
+        menuItemsArr.add(new Menu("desserts"));
     }
     
     void start () {
