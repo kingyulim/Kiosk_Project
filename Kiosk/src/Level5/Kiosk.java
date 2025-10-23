@@ -89,11 +89,11 @@ public class Kiosk {
 
             System.out.println("\n===============================================\n");
             System.out.println("[" + cateNameArr[thisIndex] + "]");
-            for (int a = 0; a < thisMenuArrList.size(); a++) {
-                MenuItem menuCateListArr = thisMenuArrList.get(a);
 
-                System.out.println(menuCateListArr.menuPrint(a + 1));
+            for (int a = 0; a < thisMenuArrList.size(); a++) {
+                System.out.println(thisMenuArrList.get(a).menuPrint(a + 1));
             }
+
             System.out.println("\n===============================================\n");
 
             System.out.print("메뉴 번호를 입력해주세요.\n(뒤로가기 : prev) : ");
