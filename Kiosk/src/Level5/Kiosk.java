@@ -130,8 +130,4 @@ public class Kiosk {
 
         sc.close();
     }
-
-    List<Menu> getMenuItemsArr() {
-        return menuItemsArr;
-    }
 }
