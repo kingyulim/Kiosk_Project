@@ -67,7 +67,7 @@ public class Kiosk {
             try {
                 choiceNum = Integer.parseInt(choice);
 
-                if (choiceNum < 1 || choiceNum > 3) {
+                if (choiceNum < 1 || choiceNum > menuItemsArr.size()) {
                     System.out.println("\n===============================================\n");
                     System.out.println("일치하는 카테고리 번호가 없습니다.\n");
 
@@ -82,49 +82,50 @@ public class Kiosk {
 
             int thisIndex = choiceNum - 1;
 
-            Menu thisMenuArr = menuItemsArr.get(thisIndex);
-            List<MenuItem> thisMenuArrList = thisMenuArr.getMenuArr();
+            while (true) {
+                Menu thisMenuArr = menuItemsArr.get(thisIndex);
+                List<MenuItem> thisMenuArrList = thisMenuArr.getMenuArr();
 
-            System.out.println("\n===============================================\n");
-            System.out.println("[" + cateNameArr[thisIndex] + "]");
+                System.out.println("\n===============================================\n");
+                System.out.println("[" + cateNameArr[thisIndex] + "]");
 
-            for (int a = 0; a < thisMenuArrList.size(); a++) {
-                System.out.println(thisMenuArrList.get(a).menuPrint(a + 1));
-            }
-
-            System.out.println("\n===============================================\n");
-
-            System.out.print("메뉴 번호를 입력해주세요.\n(뒤로가기 : prev) : ");
-            String menuNumber = sc.nextLine();
-
-            if (menuNumber.equalsIgnoreCase("prev")) {
-                continue;
-            }
-
-            try {
-                int menuNum = Integer.parseInt(menuNumber);
-
-                if  (menuNum < 1 || menuNum > thisMenuArrList.size()) {
-                    System.out.println("\n===============================================\n");
-
-                    System.out.println("입력하신 메뉴 번호는 존재하지 않는 메뉴 입니다.");
-
-                    System.out.println("\n===============================================\n");
-
-                    continue;
+                for (int a = 0; a < thisMenuArrList.size(); a++) {
+                    System.out.println(thisMenuArrList.get(a).menuPrint(a + 1));
                 }
 
                 System.out.println("\n===============================================\n");
 
-                MenuItem thisCategoryItem = thisMenuArrList.get(menuNum - 1);
-                System.out.println("주문하신 메뉴 : " + thisCategoryItem.menuPrint(menuNum));
+                System.out.print("메뉴 번호를 입력해주세요.\n(뒤로가기 : prev) : ");
+                String menuNumber = sc.nextLine();
 
-                System.out.println("\n===============================================\n");
+                if (menuNumber.equalsIgnoreCase("prev")) break;
 
-            } catch (NumberFormatException e) {
-                System.out.println("숫자만 입력해주세요.");
+                try {
+                    int menuNum = Integer.parseInt(menuNumber);
 
-                continue;
+                    if  (menuNum < 1 || menuNum > thisMenuArrList.size()) {
+                        System.out.println("\n===============================================\n");
+
+                        System.out.println("입력하신 메뉴 번호는 존재하지 않는 메뉴 입니다.");
+
+                        System.out.println("\n===============================================\n");
+
+                        continue;
+                    }
+
+                    System.out.println("\n===============================================\n");
+
+                    MenuItem thisCategoryItem = thisMenuArrList.get(menuNum - 1);
+                    System.out.println("주문하신 메뉴 : " + thisCategoryItem.menuPrint(menuNum));
+
+                    System.out.println("\n===============================================\n");
+
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("숫자만 입력해주세요.");
+
+                    continue;
+                }
             }
         }
 
