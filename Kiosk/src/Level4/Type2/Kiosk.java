@@ -126,8 +126,6 @@ public class Kiosk {
 
                 continue;
             }
-
         }
-
     }
 }

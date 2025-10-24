@@ -38,10 +38,18 @@ public class Menu {
         }
     }
 
+    /**
+     * 캡슐화된 카테고리 이름 반환 객체
+     * @return 카테고리 이름 반환
+     */
     String getCategoryName() {
         return categoryName;
     }
 
+    /**
+     * 캡슐화된 메뉴 리스트 반환 객체
+     * @return 메뉴 리스트 반환
+     */
     List<MenuItem> getMenuArr() {
         return this.menuArr;
     }

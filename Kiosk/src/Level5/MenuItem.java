@@ -11,6 +11,11 @@ public class MenuItem {
         this.MenuInfomation = MenuInfomation;
     }
 
+    /**
+     * 캡슐화된 MenuItem속성 데이터 메뉴이룸, 가격, 설명 한줄씩 반환하는 객체
+     * @param index 인덱싱
+     * @return MenuItem속성 데이터 한줄씩 반환
+     */
     String menuPrint(int index){
         return index + ". " + Menuname + " | " + MenuPrice + "원 | " + MenuInfomation;
     }
