@@ -2,7 +2,7 @@ package Challenge.Level1;
 
 import java.util.ArrayList;
 import java.util.List;
-//
+
 public class Menu {
     private final String categoryName;
     private final List<MenuItem> menuItemsList = new ArrayList<>();
