@@ -1,4 +1,4 @@
-package Level4;
+package Level4.Type2;
 
 public class MenuItem {
     private final String Menuname;

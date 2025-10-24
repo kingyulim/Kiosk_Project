@@ -1,4 +1,4 @@
-package Level4;
+package Level4.Type2;
 
 public class Main {
     public static void main(String[] args) {
