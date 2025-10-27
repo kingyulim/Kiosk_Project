@@ -193,6 +193,8 @@ public class Kiosk {
 
                     if(basketDelInput.equalsIgnoreCase("select")){
                         while (true) {
+                            // 메뉴 이름으로 삭제하는 코드
+                            /*
                             if (basketArr.size() == 0) {
                                 System.out.println("\n장바구니가 비어있습니다.");
 
@@ -204,14 +206,22 @@ public class Kiosk {
                                 System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
                             }
 
-                            System.out.print("\n삭제할 메뉴 이름을 입력해주세요: ");
+                            System.out.print("\n삭제할 메뉴 이름을 입력해주세요.\n(취소: cencel): ");
                             String selectDelete = input.nextLine();
+
+                            if (selectDelete.trim().isEmpty()) {
+                                System.out.println("\n입력란이 빈칸입니다.");
+
+                                continue;
+                            }
+
+                            if (selectDelete.equalsIgnoreCase("cencel")) break;
 
                             boolean basketIsExist = basketArr.stream()
                                     .anyMatch(menu -> menu.get("menuName").equals(selectDelete));
 
                             if (!basketIsExist) {
-                                System.out.println("해당 메뉴는 장바구니에 없습니다.");
+                                System.out.println("\n해당 메뉴는 장바구니에 없습니다.");
 
                                 continue;
                             }
@@ -219,42 +229,47 @@ public class Kiosk {
                             basketArr.removeIf(menu -> menu.get("menuName").equals(selectDelete));
 
                             System.out.println("\n선택한 메뉴가 삭제되었습니다.");
+                            */
 
-                            /*
+
+                            // 키 값으로 삭제하는 코드
+
+                            if (basketArr.size() == 0) {
+                                System.out.println("\n장바구니가 비어있습니다.");
+
+                                break;
+                            }
+
+                            System.out.println("\n[ 장바구니 ]");
+                            for (int a = 0; a < basketArr.size(); a++) {
+                                System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
+                            }
+
+                            System.out.print("\n삭제할 메뉴 번호를 입력해주세요.\n(취소: cencel): ");
+                            String selectDelete = input.nextLine();
+
+                            if (selectDelete.equalsIgnoreCase("cencel")) break;
+
                             try {
-                                if (basketArr.size() == 0) {
-                                    System.out.println("\n장바구니가 비어있습니다.");
+                                int selectDeleteNumber = Integer.parseInt(selectDelete);
 
-                                    break;
-                                }
-
-                                System.out.println("\n[ 장바구니 ]");
-                                for (int a = 0; a < basketArr.size(); a++) {
-                                    System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
-                                }
-
-                                System.out.print("\n삭제할 메뉴 번호를 입력해주세요: ");
-                                int selectDelete = input.nextInt();
-                                input.nextLine();
-
-                                if (selectDelete <= 0 || selectDelete > basketArr.size()) {
+                                if (selectDeleteNumber <= 0 || selectDeleteNumber > basketArr.size()) {
                                     System.out.println("\n입력하신 번호와 맞는 메뉴가 없습니다.");
 
                                     continue;
                                 }
 
-                                basketArr.remove(selectDelete - 1);
+                                basketArr.remove(selectDeleteNumber - 1);
 
                                 System.out.println("\n선택한 메뉴가 삭제되었습니다.");
 
                                 continue;
                             } catch (InputMismatchException e) {
                                 System.out.println("\n숫자만 입력해주세요.");
-                                input.nextLine();
 
                                 continue;
                             }
-                        */
+
                         }
 
                         continue FIRSTWHILE;
