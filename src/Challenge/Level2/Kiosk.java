@@ -126,16 +126,16 @@ public class Kiosk {
                 } else if (lastOrder.equalsIgnoreCase("discount")) {
                     System.out.println("\n할인 정보를 입력해주세요.");
 
-                    Discount[] discounts = Discount.values();
-                    String[] names = {"국가유공자", "군인", "학생"};
+                    Discount[] discountsArr = Discount.values();
+                    String[] discountsNamesArr = {"국가유공자", "군인", "학생"};
 
-                    for (int i = 0; i < discounts.length; i++) {
-                        System.out.println((i + 1) + ". " + names[i] + " " + discounts[i].getRate() + "%");
+                    for (int i = 0; i < discountsArr.length; i++) {
+                        System.out.println((i + 1) + ". " + discountsNamesArr[i] + " " + discountsArr[i].getRate() + "%");
                     }
 
                     int discountInputNumber = 0;
 
-                    String numdot = IntStream.range(0, discounts.length)
+                    String numdot = IntStream.range(0, discountsArr.length)
                             .mapToObj(i -> String.valueOf(i + 1))
                             .collect(Collectors.joining(", "));
 
@@ -150,7 +150,7 @@ public class Kiosk {
                         try {
                             discountInputNumber = Integer.parseInt(discountInput);
 
-                            if (discountInputNumber < 1 || discountInputNumber > discounts.length) {
+                            if (discountInputNumber < 1 || discountInputNumber > discountsArr.length) {
                                 System.out.println("\n해당되는 할인 번호가 아닙니다.\n");
 
                                 continue;
@@ -164,7 +164,7 @@ public class Kiosk {
                         break;
                     }
 
-                    int discountTotalPrice = discounts[discountInputNumber - 1].discount(totalPrice);
+                    int discountTotalPrice = discountsArr[discountInputNumber - 1].discount(totalPrice);
 
                     System.out.println("\n주문이 완료되었습니다.");
                     System.out.println("-----------------------");
