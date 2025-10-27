@@ -28,7 +28,7 @@ public class Main {
                 Integer menuNumber = input.nextInt();
                 input.nextLine();
 
-                if(menuNumber < 0 || menuNumber > menuItems.size()) {
+                if(menuNumber < 1 || menuNumber > menuItems.size()) {
                     System.out.println("\n입력하신 번호와 맞는 메뉴가 없습니다.\n");
 
                     continue;
