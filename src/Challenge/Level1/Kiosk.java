@@ -115,7 +115,7 @@ public class Kiosk {
                 System.out.println("-----------------------");
                 System.out.println("총 가격: " + totalPrice + "원");
 
-                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (취소: cencel) (삭제: delete): ");
+                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (삭제: delete) (취소: cencel): ");
                 String lastOrder = input.nextLine();
 
                 if (lastOrder.equalsIgnoreCase("clear")) {
