@@ -1,11 +1,9 @@
-package Challenge.Level1;
+package TestFolder.Level5.Type2;
 
-import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-//
+import java.util.List;
+import java.util.Scanner;
+
 public class Kiosk {
     private final List<Menu> menuClassArr;
 
@@ -54,13 +52,11 @@ public class Kiosk {
     void start (){
         Scanner input = new Scanner(System.in);
 
-        List<Map<String, Object>> basketArr = new ArrayList<>();
-
         String[] categoryNameArr = {"와인", "메인", "디저트"};
 
         FIRSTWHILE:
         while (true) {
-            System.out.println("\n[ 카테고리 ]");
+            System.out.println("[ 카테고리 ]");
 
             for (int a = 0; a < menuClassArr.size(); a++){
                 String categoryName = "";
@@ -85,60 +81,13 @@ public class Kiosk {
                 System.out.println((a + 1) + ". " + categoryName);
             }
 
-            if (basketArr.size() > 0) {
-                System.out.println("\n[ 오더 ]");
-                System.out.println("1. 카테고리 번호를 입력해주세요 (커멘드: 메뉴 카테고리 숫자)");
-                System.out.println("2. 장바구니 확인 후 주문 (커멘드: check)");
-                System.out.println("3. 진행중인 주문을 취소 합니다 (커멘드: cencle)");
-                System.out.println("4. 종료 (커멘드: exit)");
-                System.out.print("커멘드를 입력해주세요: ");
-            } else {
-                System.out.print("\n카테고리 번호를 입력해주세요.\n(종료: exit): ");
-            }
-
+            System.out.print("\n카테고리 번호를 입력해주세요.\n(종료: exit): ");
             String categoryInput = input.nextLine();
 
-            if (categoryInput.equalsIgnoreCase("exit")) {
+            if (categoryInput.equals("exit")) {
                 System.out.println("\n키오스크를 종료합니다.");
 
                 break;
-            } else if (categoryInput.equalsIgnoreCase("check")) {
-                Integer totalPrice = 0;
-
-                System.out.println("\n[ 장바구니 ]");
-                for (int a = 0; a < basketArr.size(); a++){
-                    System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
-
-                    totalPrice = totalPrice + (Integer) basketArr.get(a).get("menuPrice");
-                }
-
-                System.out.println("-----------------------");
-                System.out.println("총 가격: " + totalPrice + "원");
-
-                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (삭제: delete) (취소: cencel): ");
-                String lastOrder = input.nextLine();
-
-                if (lastOrder.equalsIgnoreCase("clear")) {
-                    System.out.println("\n주문이 완료되었습니다.");
-                    System.out.println("-----------------------");
-                    System.out.println("금액: " + totalPrice + "원");
-
-                    break;
-                } else if (lastOrder.equalsIgnoreCase("delete")) {
-                    System.out.println("\n장바구니 내역이 전체 삭제 되었습니다.\n");
-
-                    basketArr.clear();
-
-                    continue FIRSTWHILE;
-                } else if (lastOrder.equalsIgnoreCase("cencel")) {
-                    continue FIRSTWHILE;
-                }
-            } else if (categoryInput.equalsIgnoreCase("cencel")) {
-                System.out.println("\n장바구니 내역이 전체 삭제 되었습니다.\n");
-
-                basketArr.clear();
-
-                continue FIRSTWHILE;
             }
 
             int categoryChoiceNumber = 0;
@@ -151,19 +100,15 @@ public class Kiosk {
                     continue;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("\n숫자와 커멘드만 입력해주세요.");
-
-                continue;
+                System.out.println("\n숫자만 입력해주세요.");
             }
 
             int thisCategoryChoiceNumber = categoryChoiceNumber - 1;
             int menuChoiceNumber = 0; // 내가 선택 한 메뉴 전역 변수 설정
 
             List<MenuItem> thisCategoryMenuArr = menuClassArr.get(thisCategoryChoiceNumber).getMenuList(); // 내가 선택한 카테고리 메뉴 배열 반환
-
-            MENULISTWHILE:
             while (true) {
-                System.out.println("\n[ " + categoryNameArr[thisCategoryChoiceNumber] + " ]");
+                System.out.println("\n[ " + categoryNameArr[thisCategoryChoiceNumber] + " ]\n");
 
                 for (int a = 0; a < thisCategoryMenuArr.size(); a++) {
                     System.out.println((a + 1) + ". " + thisCategoryMenuArr.get(a).menuPrint());
@@ -182,46 +127,16 @@ public class Kiosk {
 
                         continue;
                     }
+
+                    break;
                 } catch (NumberFormatException e){
                     System.out.println("\n숫자만 입력해주세요.");
 
                     continue;
                 }
-
-                System.out.println("\n선택한 메뉴: " + thisCategoryMenuArr.get(menuChoiceNumber - 1).menuPrint() + "\n");
-
-                while (true) {
-                    System.out.print("위 메뉴를 장바구니에 추가하시겠습니까?\n(예: yes) (아니오: no) (뒤로가기: prev): ");
-                    String basketCommand = input.nextLine();
-
-                    if (basketCommand.trim().isEmpty()) {
-                        System.out.println("\n입력값이 비어 있습니다.\n");
-
-                        continue;
-                    }
-
-                    if (!List.of("yes", "no", "prev").contains(basketCommand.toLowerCase())) {
-                        System.out.println("\n정확한 커멘드를 입력해주세요.\n");
-
-                        continue;
-                    }
-
-                    if (List.of("yes", "no").contains(basketCommand.toLowerCase())) {
-                        if(basketCommand.equalsIgnoreCase("yes")){
-                            Map<String, Object> basketMap = new HashMap<>();
-
-                            basketMap.put("menuName", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuname());
-                            basketMap.put("menuPrice", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuPrice());
-
-                            basketArr.add(basketMap);
-                        }
-
-                        continue FIRSTWHILE;
-                    } else if (basketCommand.equalsIgnoreCase("prev")) {
-                        continue MENULISTWHILE;
-                    }
-                }
             }
+
+            System.out.println("\n선택한 메뉴: " + thisCategoryMenuArr.get(menuChoiceNumber - 1).menuPrint() + "\n");
         }
     }
 }

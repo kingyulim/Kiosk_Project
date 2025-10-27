@@ -1,11 +1,7 @@
-package Challenge.Level1;
+package TestFolder.Challenge.Level1.Type2;
 
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-//
+import java.util.*;
+
 public class Kiosk {
     private final List<Menu> menuClassArr;
 
@@ -115,7 +111,7 @@ public class Kiosk {
                 System.out.println("-----------------------");
                 System.out.println("총 가격: " + totalPrice + "원");
 
-                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (삭제: delete) (취소: cencel): ");
+                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (취소: cencel) (삭제: delete): ");
                 String lastOrder = input.nextLine();
 
                 if (lastOrder.equalsIgnoreCase("clear")) {
@@ -206,15 +202,13 @@ public class Kiosk {
                         continue;
                     }
 
-                    if (List.of("yes", "no").contains(basketCommand.toLowerCase())) {
-                        if(basketCommand.equalsIgnoreCase("yes")){
-                            Map<String, Object> basketMap = new HashMap<>();
+                    if (basketCommand.equalsIgnoreCase("yes")) {
+                        Map<String, Object> basketMap = new HashMap<>();
 
-                            basketMap.put("menuName", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuname());
-                            basketMap.put("menuPrice", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuPrice());
+                        basketMap.put("menuName", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuname());
+                        basketMap.put("menuPrice", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuPrice());
 
-                            basketArr.add(basketMap);
-                        }
+                        basketArr.add(basketMap);
 
                         continue FIRSTWHILE;
                     } else if (basketCommand.equalsIgnoreCase("prev")) {
