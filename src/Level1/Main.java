@@ -1,6 +1,7 @@
 package Level1;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,8 +37,8 @@ public class Main {
                 System.out.println("\n주문하신 메뉴: " + menuItems.get(menuNumber - 1));
 
                 break;
-            } catch (NumberFormatException e) {
-                System.out.println("숫자만 입력해주세요.");
+            } catch (InputMismatchException e) {
+                System.out.println("\n숫자만 입력해주세요.\n");
                 input.nextLine();
 
                 continue;
