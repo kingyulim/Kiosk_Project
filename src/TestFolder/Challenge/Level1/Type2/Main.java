@@ -1,4 +1,4 @@
-package Challenge.Level1.Type2;
+package TestFolder.Challenge.Level1.Type2;
 
 public class Main {
     public static void main(String[] args) {

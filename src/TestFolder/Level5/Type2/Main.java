@@ -1,4 +1,4 @@
-package Level5.Type2;
+package TestFolder.Level5.Type2;
 
 public class Main {
     public static void main(String[] args) {

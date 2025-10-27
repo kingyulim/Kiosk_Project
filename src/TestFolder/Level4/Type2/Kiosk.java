@@ -1,4 +1,4 @@
-package Level4.Type2;
+package TestFolder.Level4.Type2;
 
 import java.util.ArrayList;
 import java.util.List;

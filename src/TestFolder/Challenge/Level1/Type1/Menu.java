@@ -1,4 +1,4 @@
-package Challenge.Level1.Type1;
+package TestFolder.Challenge.Level1.Type1;
 
 import java.util.ArrayList;
 import java.util.List;

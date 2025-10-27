@@ -1,4 +1,4 @@
-package Test;
+package TestFolder.Test;
 
 public class MenuItem {
     private final int key;

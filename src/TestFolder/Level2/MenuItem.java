@@ -1,4 +1,4 @@
-package Level2;
+package TestFolder.Level2;
 
 public class MenuItem {
     private final int key;

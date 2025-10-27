@@ -1,4 +1,4 @@
-package Test;
+package TestFolder.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;

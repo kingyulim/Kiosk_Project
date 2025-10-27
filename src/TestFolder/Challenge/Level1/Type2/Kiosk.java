@@ -1,7 +1,6 @@
-package Challenge.Level1.Type2;
+package TestFolder.Challenge.Level1.Type2;
 
-import java.util.Scanner;
-import java.util.List;
+import java.util.*;
 
 public class Kiosk {
     private final List<Menu> menuClassArr;

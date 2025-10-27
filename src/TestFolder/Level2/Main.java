@@ -1,4 +1,4 @@
-package Level2;
+package TestFolder.Level2;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Level5.Type2;
+package TestFolder.Level5.Type2;
 
 public class MenuItem {
     private final String Menuname;

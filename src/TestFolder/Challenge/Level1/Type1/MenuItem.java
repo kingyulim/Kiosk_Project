@@ -1,4 +1,4 @@
-package Challenge.Level1.Type1;
+package TestFolder.Challenge.Level1.Type1;
 
 public class MenuItem {
     private final String Menuname;

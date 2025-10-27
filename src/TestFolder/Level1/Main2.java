@@ -1,4 +1,4 @@
-package Level1;
+package TestFolder.Level1;
 
 import java.util.HashMap;
 import java.util.Map;
