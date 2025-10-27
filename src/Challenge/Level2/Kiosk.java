@@ -173,7 +173,7 @@ public class Kiosk {
                 } else if (lastOrder.equalsIgnoreCase("delete")) {
                     String basketDelInput = "";
                     while (true) {
-                        System.out.print("\n삭제\n(부분: select) (전체: all): ");
+                        System.out.print("\n삭제\n(부분: select) (전체: all) (이전: prev): ");
                         basketDelInput = input.nextLine();
 
                         if (basketDelInput.trim().isEmpty()) {
@@ -182,7 +182,7 @@ public class Kiosk {
                             continue;
                         }
 
-                        if (!List.of("select", "all").contains(basketDelInput.toLowerCase())) {
+                        if (!List.of("select", "all", "prev").contains(basketDelInput.toLowerCase())) {
                             System.out.println("\n정확한 커멘드를 입력해주세요.");
 
                             continue;
@@ -278,6 +278,8 @@ public class Kiosk {
 
                         basketArr.clear();
 
+                        continue FIRSTWHILE;
+                    } else if (basketDelInput.equalsIgnoreCase("prev")){
                         continue FIRSTWHILE;
                     }
                 } else if (lastOrder.equalsIgnoreCase("cencel")) {
@@ -377,5 +379,7 @@ public class Kiosk {
                 }
             }
         }
+
+        input.close();
     }
 }
