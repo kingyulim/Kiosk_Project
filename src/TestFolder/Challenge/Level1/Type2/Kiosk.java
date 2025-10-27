@@ -1,8 +1,6 @@
-package Challenge.Level2;
+package TestFolder.Challenge.Level1.Type2;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Kiosk {
     private final List<Menu> menuClassArr;
@@ -113,7 +111,7 @@ public class Kiosk {
                 System.out.println("-----------------------");
                 System.out.println("총 가격: " + totalPrice + "원");
 
-                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (할인: discount) (삭제: delete) (취소: cencel): ");
+                System.out.print("\n위와 같이 주문하시겠습니까?\n(확인: clear) (취소: cencel) (삭제: delete): ");
                 String lastOrder = input.nextLine();
 
                 if (lastOrder.equalsIgnoreCase("clear")) {
@@ -122,149 +120,12 @@ public class Kiosk {
                     System.out.println("금액: " + totalPrice + "원");
 
                     break;
-                } else if (lastOrder.equalsIgnoreCase("discount")) {
-                    System.out.println("\n할인 정보를 입력해주세요.");
-
-                    Discount[] discountsArr = Discount.values();
-                    String[] discountsNamesArr = {"국가유공자", "군인", "학생"};
-
-                    for (int i = 0; i < discountsArr.length; i++) {
-                        System.out.println((i + 1) + ". " + discountsNamesArr[i] + " " + discountsArr[i].getRate() + "%");
-                    }
-
-                    int discountInputNumber = 0;
-
-                    String numdot = IntStream.range(0, discountsArr.length)
-                            .mapToObj(i -> String.valueOf(i + 1))
-                            .collect(Collectors.joining(", "));
-
-                    while (true) {
-                        System.out.print("(할인 번호: " + numdot + ") (취소: cancel): ");
-                        String discountInput = input.nextLine();
-
-                        if (discountInput.equalsIgnoreCase("cancel")) {
-                            continue FIRSTWHILE;
-                        }
-
-                        try {
-                            discountInputNumber = Integer.parseInt(discountInput);
-
-                            if (discountInputNumber < 1 || discountInputNumber > discountsArr.length) {
-                                System.out.println("\n해당되는 할인 번호가 아닙니다.\n");
-
-                                continue;
-                            }
-                        } catch (NumberFormatException e) {
-                            System.out.println("\n숫자만 입력해주세요.\n");
-
-                            continue;
-                        }
-
-                        break;
-                    }
-
-                    int discountTotalPrice = discountsArr[discountInputNumber - 1].discount(totalPrice);
-
-                    System.out.println("\n주문이 완료되었습니다.");
-                    System.out.println("-----------------------");
-                    System.out.println("금액: " + discountTotalPrice + "원");
-
-                    break;
                 } else if (lastOrder.equalsIgnoreCase("delete")) {
-                    String basketDelInput = "";
-                    while (true) {
-                        System.out.print("\n삭제\n(부분: select) (전체: all): ");
-                        basketDelInput = input.nextLine();
+                    System.out.println("\n장바구니 내역이 전체 삭제 되었습니다.\n");
 
-                        if (basketDelInput.trim().isEmpty()) {
-                            System.out.println("\n커멘드 입력이 되지 않았습니다.\n");
+                    basketArr.clear();
 
-                            continue;
-                        }
-
-                        if (!List.of("select", "all").contains(basketDelInput.toLowerCase())) {
-                            System.out.println("\n정확한 커멘드를 입력해주세요.");
-
-                            continue;
-                        }
-
-                        break;
-                    }
-
-                    if(basketDelInput.equalsIgnoreCase("select")){
-                        while (true) {
-                            if (basketArr.size() == 0) {
-                                System.out.println("\n장바구니가 비어있습니다.");
-
-                                break;
-                            }
-
-                            System.out.println("\n[ 장바구니 ]");
-                            for (int a = 0; a < basketArr.size(); a++) {
-                                System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
-                            }
-
-                            System.out.print("\n삭제할 메뉴 이름을 입력해주세요: ");
-                            String selectDelete = input.nextLine();
-
-                            boolean basketIsExist = basketArr.stream()
-                                    .anyMatch(menu -> menu.get("menuName").equals(selectDelete));
-
-                            if (!basketIsExist) {
-                                System.out.println("해당 메뉴는 장바구니에 없습니다.");
-
-                                continue;
-                            }
-
-                            basketArr.removeIf(menu -> menu.get("menuName").equals(selectDelete));
-
-                            System.out.println("\n선택한 메뉴가 삭제되었습니다.");
-
-                            /*
-                            try {
-                                if (basketArr.size() == 0) {
-                                    System.out.println("\n장바구니가 비어있습니다.");
-
-                                    break;
-                                }
-
-                                System.out.println("\n[ 장바구니 ]");
-                                for (int a = 0; a < basketArr.size(); a++) {
-                                    System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
-                                }
-
-                                System.out.print("\n삭제할 메뉴 번호를 입력해주세요: ");
-                                int selectDelete = input.nextInt();
-                                input.nextLine();
-
-                                if (selectDelete <= 0 || selectDelete > basketArr.size()) {
-                                    System.out.println("\n입력하신 번호와 맞는 메뉴가 없습니다.");
-
-                                    continue;
-                                }
-
-                                basketArr.remove(selectDelete - 1);
-
-                                System.out.println("\n선택한 메뉴가 삭제되었습니다.");
-
-                                continue;
-                            } catch (InputMismatchException e) {
-                                System.out.println("\n숫자만 입력해주세요.");
-                                input.nextLine();
-
-                                continue;
-                            }
-                        */
-                        }
-
-                        continue FIRSTWHILE;
-                    } else if(basketDelInput.equalsIgnoreCase("all")){
-                        System.out.println("\n장바구니 내역이 전체 삭제 되었습니다.\n");
-
-                        basketArr.clear();
-
-                        continue FIRSTWHILE;
-                    }
+                    continue FIRSTWHILE;
                 } else if (lastOrder.equalsIgnoreCase("cencel")) {
                     continue FIRSTWHILE;
                 }
@@ -341,19 +202,13 @@ public class Kiosk {
                         continue;
                     }
 
-                    if (List.of("yes", "no").contains(basketCommand.toLowerCase())) {
-                        if(basketCommand.equalsIgnoreCase("yes")){
-                            Map<String, Object> basketMap = new HashMap<>();
+                    if (basketCommand.equalsIgnoreCase("yes")) {
+                        Map<String, Object> basketMap = new HashMap<>();
 
-                            String menuName = thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuname();
+                        basketMap.put("menuName", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuname());
+                        basketMap.put("menuPrice", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuPrice());
 
-                            basketMap.put("menuName", menuName);
-                            basketMap.put("menuPrice", thisCategoryMenuArr.get(menuChoiceNumber - 1).getMenuPrice());
-
-                            basketArr.add(basketMap);
-
-                            System.out.println("\n" + menuName + "가 장바구니에 추가 되었습니다\n");
-                        }
+                        basketArr.add(basketMap);
 
                         continue FIRSTWHILE;
                     } else if (basketCommand.equalsIgnoreCase("prev")) {
