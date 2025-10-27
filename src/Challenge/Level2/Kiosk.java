@@ -193,6 +193,34 @@ public class Kiosk {
 
                     if(basketDelInput.equalsIgnoreCase("select")){
                         while (true) {
+                            if (basketArr.size() == 0) {
+                                System.out.println("\n장바구니가 비어있습니다.");
+
+                                break;
+                            }
+
+                            System.out.println("\n[ 장바구니 ]");
+                            for (int a = 0; a < basketArr.size(); a++) {
+                                System.out.println((a + 1) + ". " + basketArr.get(a).get("menuName"));
+                            }
+
+                            System.out.print("\n삭제할 메뉴 이름을 입력해주세요: ");
+                            String selectDelete = input.nextLine();
+
+                            boolean basketIsExist = basketArr.stream()
+                                    .anyMatch(menu -> menu.get("menuName").equals(selectDelete));
+
+                            if (!basketIsExist) {
+                                System.out.println("해당 메뉴는 장바구니에 없습니다.");
+
+                                continue;
+                            }
+
+                            basketArr.removeIf(menu -> menu.get("menuName").equals(selectDelete));
+
+                            System.out.println("\n선택한 메뉴가 삭제되었습니다.");
+
+                            /*
                             try {
                                 if (basketArr.size() == 0) {
                                     System.out.println("\n장바구니가 비어있습니다.");
@@ -216,6 +244,7 @@ public class Kiosk {
                                 }
 
                                 basketArr.remove(selectDelete - 1);
+
                                 System.out.println("\n선택한 메뉴가 삭제되었습니다.");
 
                                 continue;
@@ -225,6 +254,7 @@ public class Kiosk {
 
                                 continue;
                             }
+                        */
                         }
 
                         continue FIRSTWHILE;
