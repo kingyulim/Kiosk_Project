@@ -1,4 +1,4 @@
-package Challenge.Level2;
+package Challenge.Level1;
 
 public class Main {
     public static void main(String[] args) {

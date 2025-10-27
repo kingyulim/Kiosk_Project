@@ -1,4 +1,4 @@
-package Challenge.Level2;
+package Challenge.Level1;
 
 public class MenuItem {
     private final String Menuname;

@@ -1,4 +1,4 @@
-package Challenge.Level2;
+package Challenge.Level1;
 
 import java.util.Scanner;
 import java.util.List;
