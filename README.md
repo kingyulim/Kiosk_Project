@@ -3,7 +3,11 @@
 목표:
 단계별로 자바 기본 문법과 객체지향 개념(OOP)을 학습하며, 키오스크 프로그램을 설계하고 구현합니다.
 ---
-# 💬 프로젝트 구조 예시
+
+
+# 🚀 프로젝트 레벨별 가이드
+
+## 💬 프로젝트 구조 예시
 ```java
 📂 src
  ┣ 📜 Main.java
@@ -11,10 +15,6 @@
  ┣ 📜 Menu.java
  ┗ 📜 MenuItem.java
 ```
----
-
-
-# 🚀 프로젝트 레벨별 가이드
 
 ---
 # 🧩 Lv 1. 기본적인 키오스크 프로그래밍
@@ -179,6 +179,15 @@ public static void main(String[] args) {
 
 ---
 # 🚀 도전 프로젝트 레벨별 가이드
+## 💬 프로젝트 구조 예시
+```java
+📂 src
+ ┣ 📜 Discount.java
+ ┣ 📜 Main.java
+ ┣ 📜 Kiosk.java
+ ┣ 📜 Menu.java
+ ┗ 📜 MenuItem.java
+```
 ---
 
 # 🧩 Lv 1. 장바구니 및 구매하기 기능 추가하기
